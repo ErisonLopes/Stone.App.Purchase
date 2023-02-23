@@ -1,15 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Stone.App.Purchase.Data\Stone.App.Purchase.Data.csproj" />
+    <ProjectReference Include="..\Stone.App.Purchase.Domain\Stone.App.Purchase.Domain.csproj" />
     <ProjectReference Include="..\Stone.App.Purchase.Infrastructure\Stone.App.Purchase.Infrastructure.csproj" />
   </ItemGroup>
 

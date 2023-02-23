@@ -11,6 +11,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Stone.App.Purchase.Infrastructure.Extensions;
+using Stone.App.Purchase.Data.Extensions;
+using System.Text.Json.Serialization;
 
 namespace Stone.App.Purchase
 {
@@ -27,7 +30,18 @@ namespace Stone.App.Purchase
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services
+                .AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+                });
+
+            services
+                .AddMongoDb(Configuration.GetConnectionString("MongoDb"))
+                .AddRepository();
+
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Stone.App.Purchase", Version = "v1" });
